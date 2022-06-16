@@ -1,4 +1,5 @@
-﻿using GeekShopping.ProductAPI.Configurations;
+﻿using AutoMapper;
+using GeekShopping.ProductAPI.Configurations;
 using GeekShopping.ProductAPI.Model.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,16 +7,27 @@ namespace GeekShopping.ProductAPI
 {
     public class Startup : IStartup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+       
 
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            #region Mapper
+            IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            #endregion Mapper
+            #region Segunda forma de Configurar o Mapper 
+            //Menos verbosa que o primeiro método
+            services.AddAutoMapperConfiguration();
+            #endregion 
+
+
             services.AddDatabaseConfiguration(Configuration);
 
             services.AddControllers();
