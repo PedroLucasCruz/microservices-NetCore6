@@ -1,0 +1,10 @@
+Swashbuckle
+
+- Swashbuckle.AspNetCore.SwaggerUI
+- Swashbuckle.AspNetCore.Annotations
+- AutoMapper
+- AutoMapper.Extensions.Microsoft.DependencyInjection 
+- Microsoft.AspNetCore.Authentication.JwtBearer 
+- Microsoft.EntityFrameworkCore.tools
+- Pomelo.entityFrameworkCore.MySql (foi trocado o pomelo pelo sqlServer Microsoft.EntityFrameWorkCore.SqlServer)
+
