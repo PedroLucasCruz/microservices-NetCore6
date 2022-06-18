@@ -1,11 +1,18 @@
-﻿--insert into product values ('Almofada gamer', 39,9, 'Almofada fofinha', 'Acessorios', )
+﻿insert into product
+(       
+     [name]         
+    ,[price]        
+    ,[description]   
+    ,[category_name] 
+    ,[image_url]    
+)
 
+values
+(
+'Joystique',
+200.00, 
+'control gamer', 
+'gamer',
+'https://raw.githubusercontent.com/PedroLucasCruz/microservices-NetCore6/main/GeekShooping/Imagens/Joystique.jpg'
+)
 
-
-   --[id]            BIGINT          IDENTITY (1, 1) NOT NULL,
-   -- [name]          NVARCHAR (150)  NOT NULL,
-   -- [price]         DECIMAL (18, 2) NOT NULL,
-   -- [description]   NVARCHAR (500)  NULL,
-   -- [category_name] NVARCHAR(100) NOT NULL,
-   -- [image_url]     NVARCHAR (300)  NOT NULL,
-   -- CONSTRAINT [PK_product] PRIMARY KEY CLUSTERED ([id] ASC)
