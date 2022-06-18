@@ -1,4 +1,5 @@
-﻿using GeekShopping.ProductAPI.Repository.Interfaces;
+﻿using GeekShopping.ProductAPI.Data.ValueObjects;
+using GeekShopping.ProductAPI.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,12 +25,36 @@ namespace GeekShopping.ProductAPI.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> FindById(long id)
         {
             var product = await _repository.FindById(id);
             if (product == null) return NotFound();
             return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ProductVO vo)
+        {
+            if (vo == null) return BadRequest(); 
+            var product = await _repository.Create(vo);           
+            return Ok(product);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(ProductVO vo)
+        {
+            if (vo == null) return BadRequest();
+            var product = await _repository.Update(vo);
+            return Ok(product);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var status = await _repository.Delete(id);
+            if (!status) return BadRequest();
+            return Ok(status);
         }
     }
 }
