@@ -13,7 +13,7 @@ namespace GeekShopping.ProductAPI.Data.ValueObjects
  
         public string? Description { get; set; }
   
-        public decimal CategoryName { get; set; }
+        public string CategoryName { get; set; }
  
         public string ImageUrl { get; set; }
     }

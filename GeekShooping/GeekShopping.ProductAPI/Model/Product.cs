@@ -21,7 +21,7 @@ namespace GeekShopping.ProductAPI.Model
         public string? Description { get; set; }
         [Column("category_name")]
         [StringLength(50)]
-        public decimal CategoryName { get; set; }
+        public string CategoryName { get; set; }
         [Column("image_url")]
         [StringLength(300)]
         public string ImageUrl { get; set; }

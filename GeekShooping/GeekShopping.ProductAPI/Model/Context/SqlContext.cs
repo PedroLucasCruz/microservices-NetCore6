@@ -7,6 +7,6 @@ namespace GeekShopping.ProductAPI.Model.Context
         public SqlContext(){}
         public SqlContext(DbContextOptions<SqlContext> options) : base(options){}
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> products { get; set; }
     }
 }

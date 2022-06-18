@@ -24,6 +24,7 @@ namespace GeekShopping.ProductAPI
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             #endregion Mapper
+
             #region Segunda forma de Configurar o Mapper 
             //Menos verbosa que o primeiro método
             services.AddAutoMapperConfiguration();

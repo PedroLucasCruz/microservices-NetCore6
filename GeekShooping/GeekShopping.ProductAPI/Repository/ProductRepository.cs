@@ -19,21 +19,21 @@ namespace GeekShopping.ProductAPI.Repository
         }
 
         public async Task<IEnumerable<ProductVO>> FindAll()
-        {
-           List<Product> products = await _sQLContext.Products.ToListAsync();
+        {           
+           List<Product> products = await _sQLContext.products.ToListAsync();
             return _mapper.Map<List<ProductVO>>(products);
         }
 
         public async Task<ProductVO> FindById(long id)
         {
             //integorrogação para permitir o retorno de nullos também
-            Product? products = await _sQLContext.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+            Product? products = await _sQLContext.products.Where(p => p.Id == id).FirstOrDefaultAsync();
             return _mapper.Map<ProductVO>(products);
         }
         public async Task<ProductVO> Create(ProductVO vo)
         {
             Product products = _mapper.Map<Product>(vo);
-            _sQLContext.Products.Add(products);
+            _sQLContext.products.Add(products);
             await _sQLContext.SaveChangesAsync();
             return _mapper.Map<ProductVO>(products);
         }
@@ -41,7 +41,7 @@ namespace GeekShopping.ProductAPI.Repository
         public async Task<ProductVO> Update(ProductVO vo)
         {
             Product products = _mapper.Map<Product>(vo);
-            _sQLContext.Products.Update(products);
+            _sQLContext.products.Update(products);
             await _sQLContext.SaveChangesAsync();
             return _mapper.Map<ProductVO>(products);
         }
@@ -50,9 +50,9 @@ namespace GeekShopping.ProductAPI.Repository
         {
             try
             {
-                Product? products = await _sQLContext.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+                Product? products = await _sQLContext.products.Where(p => p.Id == id).FirstOrDefaultAsync();
                 if (products == null) return false;
-                _sQLContext.Products.Remove(products);
+                _sQLContext.products.Remove(products);
                 await _sQLContext.SaveChangesAsync();
                 return true;
             }
