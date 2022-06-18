@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GeekShopping.ProductAPI.Configurations;
 using GeekShopping.ProductAPI.Model.Context;
+using GeekShopping.ProductAPI.Repository;
+using GeekShopping.ProductAPI.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductAPI
@@ -27,6 +29,7 @@ namespace GeekShopping.ProductAPI
             services.AddAutoMapperConfiguration();
             #endregion 
 
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddDatabaseConfiguration(Configuration);
 
