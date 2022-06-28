@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XqDvUaUp4QYozG37jtVu9jjl7fM8pvMtwVKHmR6f8Ac=",
+  "Hash": "RpnfsyKZPTZ/O6yyMj4m5P+U9hhFFm4dU8Rxe/XlsSI=",
   "Source": "GeekShopping.Web",
   "BasePath": "_content/GeekShopping.Web",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\GeekShopping.Web.styles.css",
-      "SourceId": "GeekShopping.Web",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/GeekShopping.Web",
-      "RelativePath": "GeekShopping.Web.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\GeekShopping.Web.styles.css"
-    },
-    {
-      "Identity": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\GeekShopping.Web.bundle.scp.css",
-      "SourceId": "GeekShopping.Web",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/GeekShopping.Web",
-      "RelativePath": "GeekShopping.Web.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\GeekShopping.Web.bundle.scp.css"
-    },
     {
       "Identity": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\wwwroot\\css\\site.css",
       "SourceId": "GeekShopping.Web",
