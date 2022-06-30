@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace GeekShopping.Web.Utils
 {
-  static  public class HttpClienExtensions
+  static  public class HttpClienExtensions 
     {
       private static MediaTypeHeaderValue contentType = new MediaTypeHeaderValue("application/json");
        public static async Task<T> ReadContentAs<T> (

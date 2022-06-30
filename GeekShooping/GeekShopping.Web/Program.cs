@@ -1,23 +1,28 @@
-var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+using GeekShopping.Web;
 
-var app = builder.Build();
+var builder = WebApplication.CreateBuilder(args)
+    .UseStartup<Startup>();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}
-app.UseStaticFiles();
+//var builder = WebApplication.CreateBuilder(args);
+//// Add services to the container.
+//builder.Services.AddControllersWithViews();
 
-app.UseRouting();
+//var app = builder.Build();
 
-app.UseAuthorization();
+//// Configure the HTTP request pipeline.
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//}
+//app.UseStaticFiles();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.UseRouting();
 
-app.Run();
+//app.UseAuthorization();
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//app.Run();

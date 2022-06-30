@@ -1,5 +1,3 @@
-E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\appsettings.Development.json
-E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\appsettings.json
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.staticwebassets.runtime.json
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.exe
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.deps.json
@@ -12,8 +10,6 @@ E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com 
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.AssemblyInfo.cs
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.CoreCompileInputs.cache
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.MvcApplicationPartsAssemblyInfo.cache
-E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.RazorAssemblyInfo.cache
-E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.RazorAssemblyInfo.cs
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\staticwebassets.build.json
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\staticwebassets.development.json
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\scopedcss\bundle\GeekShopping.Web.styles.css
@@ -22,3 +18,7 @@ E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com 
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.pdb
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.genruntimeconfig.cache
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\ref\GeekShopping.Web.dll
+E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\spa.proxy.json
+E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\spa.proxy.json
+E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\Microsoft.AspNetCore.SpaProxy.dll
+E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.CopyComplete

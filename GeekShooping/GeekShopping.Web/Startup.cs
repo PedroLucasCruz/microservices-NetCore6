@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using GeekShopping.ProductAPI.Configurations;
-using GeekShopping.ProductAPI.Model.Context;
-using GeekShopping.ProductAPI.Repository;
-using GeekShopping.ProductAPI.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using GeekShopping.Web.Services;
+using GeekShopping.Web.Services.IServices;
 
-namespace GeekShopping.ProductAPI
+namespace GeekShopping.Web
 {
     public class Startup : IStartup
     {
@@ -15,43 +11,27 @@ namespace GeekShopping.ProductAPI
             Configuration = configuration;
         }
 
-       
+
 
         public void ConfigureServices(IServiceCollection services)
         {
-            #region Mapper
-            IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-            services.AddSingleton(mapper);
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            #endregion Mapper
 
-            #region Segunda forma de Configurar o Mapper 
-            //Menos verbosa que o primeiro método
-            services.AddAutoMapperConfiguration();
-            #endregion
+            //services.AddScoped<IProductRepository, ProductRepository>();
 
-            #region Configuração de HttpClient
-            //services.AddHttpClient<IProductService, ProductService>();
+            #region httpClientFactory
 
-            #endregion
-
-            services.AddScoped<IProductRepository, ProductRepository>();
-
-            services.AddDatabaseConfiguration(Configuration);
+            services.AddHttpClient<IProductService, ProductService>(c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"])); //injecao de product service para uso do httpClienteFactory
+            
+            #endregion 
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+         
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
         {
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
+           
 
             app.UseHttpsRedirection();
             app.UseAuthorization();

@@ -34,7 +34,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ProductVO vo)
+        public async Task<IActionResult> Create([FromBody] ProductVO vo)
         {
             if (vo == null) return BadRequest(); 
             var product = await _repository.Create(vo);           
@@ -42,7 +42,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(ProductVO vo)
+        public async Task<IActionResult> Update([FromBody] ProductVO vo)
         {
             if (vo == null) return BadRequest();
             var product = await _repository.Update(vo);
