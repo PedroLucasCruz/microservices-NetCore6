@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Uh1utSqQCzl30JQu+tx0H38LYAd2Og91TJ3cfzk40Ag0+CIvLiEi67tiFx/1aiBOKfVClw3i03kM1vvzM2ZJw==",
+  "dgSpecHash": "88lJtSJVvg68gegnfcWlfvoA5UVoh9heU3g2/G9DI2hW68PFOhsAPhhccIBQKktUnGj0z614p2i00PLh8rj7Lw==",
   "success": true,
-  "projectFilePath": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.ProductAPI\\GeekShopping.ProductAPI.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Documents\\_GIT\\microservices-NetCore6\\GeekShooping\\GeekShopping.ProductAPI\\GeekShopping.ProductAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

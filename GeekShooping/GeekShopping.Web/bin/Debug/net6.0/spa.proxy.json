@@ -2,7 +2,7 @@
 "SpaProxyServer": {
 "ServerUrl": "",
 "LaunchCommand": "",
-"WorkingDirectory": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web",
+"WorkingDirectory": "C:\\Users\\pedro\\Documents\\_GIT\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web",
 "MaxTimeoutInSeconds": "120"
 }
 }

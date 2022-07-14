@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sc5zOWLp4zq0QrUE3mc3E8Wkkl8F7X2tMUrCJTEsNbrEePKRVSfEehBu2Zm2fKFl9DHsb3If/Iuh5DvOy+jXow==",
+  "dgSpecHash": "/VKHNIYSygocsI8LkEFG4my5DDLILyz2oH7yQ5YiYHtCvrD7Thy25eheoff/5kWllGrN6QCKTSKEWvdS1Ypk/Q==",
   "success": true,
-  "projectFilePath": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\GeekShopping.Web.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Documents\\_GIT\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\GeekShopping.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\6.0.4\\microsoft.aspnetcore.spaproxy.6.0.4.nupkg.sha512"
   ],

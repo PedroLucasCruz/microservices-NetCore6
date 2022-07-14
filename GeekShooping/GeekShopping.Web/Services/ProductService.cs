@@ -27,12 +27,7 @@ namespace GeekShopping.Web.Services
             return await response.ReadContentAs<ProductModel>();
             throw new NotImplementedException();
         }
-
-        public async Task<ProductModel> FindProductByName(ProductModel model)
-        {
-            throw new NotImplementedException();
-        }
-
+          
         public async Task<ProductModel> CreateProduct(ProductModel model)
         {
             var response = await _httpClient.PostAsJson(BasePath,model);

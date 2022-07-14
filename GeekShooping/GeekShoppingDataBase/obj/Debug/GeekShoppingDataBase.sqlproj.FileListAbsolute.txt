@@ -4,3 +4,9 @@ E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com 
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.sqlproj.AssemblyReference.cache
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.dll
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.pdb
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\bin\Debug\GeekShoppingDataBase.dacpac
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\bin\Debug\GeekShoppingDataBase.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\bin\Debug\GeekShoppingDataBase.pdb
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.sqlproj.AssemblyReference.cache
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingDataBase\obj\Debug\GeekShoppingDataBase.pdb

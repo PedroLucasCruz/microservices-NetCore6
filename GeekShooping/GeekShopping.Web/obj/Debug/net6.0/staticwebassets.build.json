@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xep3wLfBzsqgsam+095p1KpBaFj8umG9AnEzflAa31E=",
+  "Hash": "AYU3Y4SdQXNsUIW3ZB3LlLGDTvGZEdWoJA/l1H4V7Wc=",
   "Source": "GeekShopping.Web",
   "BasePath": "_content/GeekShopping.Web",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "GeekShopping.Web\\wwwroot",
       "Source": "GeekShopping.Web",
-      "ContentRoot": "E:\\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\pedro\\Documents\\_GIT\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web\\wwwroot\\",
       "BasePath": "_content/GeekShopping.Web",
       "Pattern": "**"
     }
