@@ -18,14 +18,14 @@ namespace GeekShopping.Web.Services
         {
             var response = await _httpClient.GetAsync(BasePath);
             return await response.ReadContentAs<List<ProductModel>>();
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public async Task<ProductModel> FindProductById(long id)
         {
-            var response = await _httpClient.GetAsync($"{ BasePath}/{id}");
+            var response = await _httpClient.GetAsync($"{BasePath}/{id}");
             return await response.ReadContentAs<ProductModel>();
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public async Task<ProductModel> FindProductByName(ProductModel model)

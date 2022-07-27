@@ -9,9 +9,7 @@ namespace GeekShopping.Web.Utils
         public static async Task<T> ReadContentAs<T>(
             this HttpResponseMessage response)
         {
-            if (!response.IsSuccessStatusCode) throw
-                     new ApplicationException($"Somenthing went sront calling the API: "
-                     + $"{ response.ReasonPhrase}");
+            if (!response.IsSuccessStatusCode) throw new ApplicationException($"Somenthing went sront calling the API: "+ $"{ response.ReasonPhrase}");
             string dataAsString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             JsonSerializerOptions option = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             return JsonSerializer.Deserialize<T>(dataAsString, option);
