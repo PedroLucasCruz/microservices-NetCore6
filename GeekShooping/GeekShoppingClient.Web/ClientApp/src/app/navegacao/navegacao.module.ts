@@ -2,16 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { HomeComponent } from './home/home.component';
+
+
 
 @NgModule({
     declarations: [    
-     NavMenuComponent
+     NavMenuComponent,
+     HomeComponent
     ],
 
     imports: [
 
         CommonModule,        
         RouterModule,    
+        
+
         // CollapseModule.forRoot(),
         // ToastrModule.forRoot({
         // timeOut: 5000,
@@ -24,12 +30,12 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
       ],
 
       exports:[
-        NavMenuComponent
-      
+        NavMenuComponent,
+        HomeComponent
       ],
 
       providers: [
-        // ProfileSelectService
+        
       ]
     })
 
