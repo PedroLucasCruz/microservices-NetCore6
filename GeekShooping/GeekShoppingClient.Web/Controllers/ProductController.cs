@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShoppingClient.Web.Controllers
 {
+   
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -12,10 +13,16 @@ namespace GeekShoppingClient.Web.Controllers
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
         }
 
-        public async Task<IActionResult> ProductIndex()
+        [HttpGet]
+        [Route("GetAll")]
+        //[Authorize]
+        public async Task<IActionResult> getAll()
         {
             var products = await _productService.FindAllProducts();
             return Ok(products);
         }
+
+     
+
     }
 }
