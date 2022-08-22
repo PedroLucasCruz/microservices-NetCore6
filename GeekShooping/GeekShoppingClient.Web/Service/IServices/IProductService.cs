@@ -1,6 +1,6 @@
-﻿using GeekShopping.Web.Models;
+﻿using GeekShoppingClient.Web.Models;
 
-namespace GeekShopping.Web.Services.IServices
+namespace GeekShoppingClient.Web.Services.IServices
 {
     public interface IProductService
     {

@@ -69,6 +69,7 @@ C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.P
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\GeekShopping.ProductAPI.deps.json
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\GeekShopping.ProductAPI.runtimeconfig.json
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\GeekShopping.ProductAPI.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\ref\GeekShopping.ProductAPI.dll
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\GeekShopping.ProductAPI.pdb
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -124,7 +125,6 @@ C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.P
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\scopedcss\bundle\GeekShopping.ProductAPI.styles.css
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\GeekShopping.ProductAPI.csproj.CopyComplete
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\GeekShopping.ProductAPI.dll
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\refint\GeekShopping.ProductAPI.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\ref\GeekShopping.ProductAPI.dll
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\GeekShopping.ProductAPI.pdb
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\GeekShopping.ProductAPI.genruntimeconfig.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.ProductAPI\obj\Debug\net6.0\ref\GeekShopping.ProductAPI.dll

@@ -1,4 +1,4 @@
-﻿namespace GeekShopping.Web.Models
+﻿namespace GeekShoppingClient.Web.Models
 {
     public class ProductModel
     {

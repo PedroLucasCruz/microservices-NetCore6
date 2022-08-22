@@ -22,27 +22,3 @@ E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com 
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\spa.proxy.json
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\Microsoft.AspNetCore.SpaProxy.dll
 E:\_ESTUDOS - ANGULAR - ENTITYFRAMEWORK - C# Etc\6 - Udemy - MicroServiços com Asp.net, Net 6 e C#\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.CopyComplete
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\spa.proxy.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.staticwebassets.runtime.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.exe
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.deps.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.runtimeconfig.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.dll
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\GeekShopping.Web.pdb
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\bin\Debug\net6.0\Microsoft.AspNetCore.SpaProxy.dll
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.AssemblyReference.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\spa.proxy.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.AssemblyInfoInputs.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.AssemblyInfo.cs
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.CoreCompileInputs.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\scopedcss\bundle\GeekShopping.Web.styles.css
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.csproj.CopyComplete
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.dll
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\refint\GeekShopping.Web.dll
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.pdb
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\GeekShopping.Web.genruntimeconfig.cache
-C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShopping.Web\obj\Debug\net6.0\ref\GeekShopping.Web.dll

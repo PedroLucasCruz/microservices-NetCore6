@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
 
-namespace GeekShopping.Web.Utils
+namespace GeekShoppingClient.Web.Utils
 {
     static public class HttpClienExtensions
     {
@@ -29,6 +29,15 @@ namespace GeekShopping.Web.Utils
             content.Headers.ContentType = contentType;
             return httpClient.PutAsJsonAsync(url, content);
         }
+
+        public static Task<HttpResponseMessage> GetAsync<T>(this HttpClient httpClient, string url, T data)
+        {
+            var dataAsString = JsonSerializer.Serialize(data);
+            var content = new StringContent(dataAsString);
+            content.Headers.ContentType = contentType;
+            return httpClient.GetAsync(url);
+        }
+
     }
 }
 

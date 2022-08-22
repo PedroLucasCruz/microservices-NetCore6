@@ -1,8 +1,0 @@
-{
-"SpaProxyServer": {
-"ServerUrl": "",
-"LaunchCommand": "",
-"WorkingDirectory": "C:\\Users\\pedro\\Documents\\_GIT\\microservices-NetCore6\\GeekShooping\\GeekShopping.Web",
-"MaxTimeoutInSeconds": "120"
-}
-}

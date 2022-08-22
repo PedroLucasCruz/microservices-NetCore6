@@ -42,6 +42,8 @@ namespace GeekShopping.ProductAPI
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+           
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)

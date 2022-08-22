@@ -1,5 +1,6 @@
-﻿using GeekShopping.Web.Services;
-using GeekShopping.Web.Services.IServices;
+﻿
+using GeekShoppingClient.Web.Services.IServices;
+using GeekShoppingClient.Web.Services;
 
 namespace GeekShoppingClient.Web
 {
@@ -18,10 +19,13 @@ namespace GeekShoppingClient.Web
 
             #region httpClientFactory
 
-            services.AddHttpClient<IProductService, ProductService>(c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"])); //injecao de product service para uso do httpClienteFactory
+            services.AddHttpClient<IProductService, ProductService>(
+                c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"])); //injecao de product service para uso do httpClienteFactory
+            //services.AddScoped<IProductService, ProductService>();
             #endregion
 
             services.AddControllersWithViews();
+            
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)

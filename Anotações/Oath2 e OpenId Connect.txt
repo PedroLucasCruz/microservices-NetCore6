@@ -1,0 +1,42 @@
+>>>> OAuth 2
+
+- OAuth 2 é um protocolo aberto que permite autorização de forma simples e padronizada entre aplicações web, mobile e aplicações desktop;
+
+- Ele é usado para Autorização e não pra autenticação;
+
+-OAuth 2 utiliza um access token e a aplicação cliente usa esse token para acessar uma api ou endpoints; 
+
+- Outh 2 determina também como os endpoints serão usados em diferentes tipos de aplicações. 
+
+Obs: o OAuth 2 é apenas metade da solução 
+
+>> OpenId Connect 
+
+- OpenId Connect é simplesmente uma camada de identificação no topo do procolo OAuth 2, basicamente ele é a extensão do OAuth 2;
+
+- Através do OpenId Connect uma aplicação pode receber um identity Toekn além de um access token se for o caso. Esse identity token pode ser usado para logar em uma aplicação desde que essa aplicação use access token para acessar a api, Basicamente o OpenId connect provê tanto autenticação quanto autorização. Ele também provê pontos adicionais que podem ser usados pela aplicações client para obter informações do usuário, essas informações pessoas podem não ser providas por padrões e a gente pode customizar OpenId. 
+
+- O OpenId Connect define como os diferente tipos de aplicações cliente podem obter de forma segura um token de identity server. O OpenId connect é um protocolo superior ao Oath 2 então ele estende o OAuth2 e supera o que ele faz.
+
+Identity Server 5 - Duende Identity Server 
+
+- https://dosc.duendesoftware.com/identityserver/v5
+
+- Identity Server é uma implementação do OpenId Connect e Oauth 2 e é altamente otimizado para resolver problema de segurança comuns em aplicações atuais, sejam elas mobile, nativas ou mesmo aplicações web. 
+
+- Identity Serve é gratuito para fora de ambientes de produção e se sua organização tiver um faturamento de menos de um milhão de dólares voê pode obter uma licença gratuita pra executar em produção
+- Certificado pela openId foundation e faz parte da dot Net foundation, a ultima versão do Identity server foi renomeada para duende serve e não é mais gratuita. 
+
+--------------------------------------------------------------------------
+
+Terminologias do Identity Server 
+
+- Client -> é um componente de software que requisita um token á um identity server - as vezes autenticar um usuário ou para acessar um recurso; 
+
+- API Resource -> normalmente representam uma funcionalidade que um client precisa invocar - normalmente implementados através de um web API's; 
+
+- Identity Resource (Claims) -> informações relacionadas à identidade do usuário. Ex: nome, e-mail etc;
+
+- Identity Token -> a resposta a um process de autenticação; 
+
+- Acess Token -> possibilita o acesso do usuário a um API resource.  
