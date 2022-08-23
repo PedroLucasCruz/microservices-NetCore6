@@ -29,7 +29,7 @@ Identity Server 5 - Duende Identity Server
 
 --------------------------------------------------------------------------
 
-Terminologias do Identity Server 
+>> Terminologias do Identity Server 
 
 - Client -> é um componente de software que requisita um token á um identity server - as vezes autenticar um usuário ou para acessar um recurso; 
 
@@ -40,3 +40,9 @@ Terminologias do Identity Server
 - Identity Token -> a resposta a um process de autenticação; 
 
 - Acess Token -> possibilita o acesso do usuário a um API resource.  
+
+---------------------------------------------------------------------------------
+
+>>> Como um Toekn de Autenteticação Funciona
+
+

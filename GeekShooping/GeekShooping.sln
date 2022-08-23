@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32421.90
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{28C0BC30-BBFB-4C1F-AD28-65642FDFB846}"
 EndProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{5B
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GeekShoppingDataBase", "GeekShoppingDataBase\GeekShoppingDataBase.sqlproj", "{03498A39-C3B3-4F63-8295-D82E1EE39D27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShoppingClient.Web", "GeekShoppingClient.Web\GeekShoppingClient.Web.csproj", "{CC1D1F13-6B17-4483-A0C0-0E59ED857369}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShoppingClient.Web", "GeekShoppingClient.Web\GeekShoppingClient.Web.csproj", "{CC1D1F13-6B17-4483-A0C0-0E59ED857369}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
