@@ -1,0 +1,5 @@
+1 - Após configurar o identity na aplicação em tudo que é preciso no startup rodar as migrações
+2 - Fazer um Set na aplicação do Identity 
+3 - Selecionar em Default projeto o projeto do identity 
+4 - Rodar o add-migration identity(Nome Migration) 
+5 - 

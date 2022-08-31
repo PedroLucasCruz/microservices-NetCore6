@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MainModule\Consent\" />
+    <Folder Include="MainModule\Device\" />
+    <Folder Include="MainModule\Diagnostics\" />
+    <Folder Include="MainModule\Grants\" />
+    <Folder Include="MainModule\Home\" />
+    <Folder Include="MainModule\Ciba\" />
+    <Folder Include="MainModule\ExternalLogin\" />
+    <Folder Include="MainModule\Shared\" />
+    <Folder Include="MainModule\ServerSideSessions\" />
+    <Folder Include="MainModule\Redirect\" />
+  </ItemGroup>
+
+</Project>
