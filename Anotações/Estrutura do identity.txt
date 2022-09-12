@@ -1,0 +1,25 @@
+Implementação do Identity 
+
+Asp.Net Core App 
+Camada da aplicação 
+
+------------------------------------------------------
+
+Identity Manager 
+
+Tudo que é feito atráves do identity que vc interaje com o identity é atraves da camada do identity manager. Exemplo UserManager, RoleManager e afins 
+
+------------------------------------------------------
+
+
+Identity Store 
+
+> Data Access Layer 
+-Padrões de banco de dados ficam nesta camada de Data Access Layer, Redis etc, todas as vezes 
+que surgir a necessidade de se trabalhar com um pacote novo, este novo pacote de extensão novo deverá ser instalado. 
+Exemple: UseStore, RoleStore e afins
+
+------------------------------------------------------
+
+> Data Source 
+-Sql server database, azure table storage
