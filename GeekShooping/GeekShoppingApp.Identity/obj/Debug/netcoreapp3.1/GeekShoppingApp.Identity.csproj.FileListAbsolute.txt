@@ -88,3 +88,7 @@ C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingAp
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\obj\Debug\netcoreapp3.1\GeekShoppingApp.Identity.csproj.AssemblyReference.cache
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll

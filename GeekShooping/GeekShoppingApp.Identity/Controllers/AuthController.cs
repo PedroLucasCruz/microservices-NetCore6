@@ -6,8 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+
 namespace GeekShoppingApp.Identity.Controllers
 {
+    [ApiController] //Usado para liberar os entendimento dos schemas do swagger, decorando com está anotação você esta dizendo que ela é uma api controller, o schemas trafegam json e não formulario
     [Route("api/identidade")]
     public class AuthController : Controller
     {
