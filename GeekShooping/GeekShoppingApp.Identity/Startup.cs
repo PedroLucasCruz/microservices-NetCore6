@@ -46,7 +46,7 @@ namespace GeekShoppingApp.Identity
                                                                  //para que a classe AppSettings represente os dados da sessão appSettingsSection vindo das configurações
             
             var appSettings = appSettingsSection.Get<AppSettings>(); //Obtem a AppSettings já populada
-            var key = Encoding.ASCII.GetBytes(appSettings.Secrete); //Transforma a chave do token em uma sequencia de bytes para uso mais adiante
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret); //Transforma a chave do token em uma sequencia de bytes para uso mais adiante
 
             //O padrão de autenticação depende da forma de implementação
             //neste caso o privider de autenticação que está sendo utilizado é AuthenticationScheme do Json web Token

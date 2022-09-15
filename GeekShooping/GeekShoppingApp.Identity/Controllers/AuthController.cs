@@ -1,9 +1,14 @@
-﻿using GeekShoppingApp.Identity.Models;
+﻿using GeekShoppingApp.Identity.Extensions;
+using GeekShoppingApp.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 
@@ -16,11 +21,17 @@ namespace GeekShoppingApp.Identity.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly AppSettings _appSettings;
 
-        public AuthController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AuthController(
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            IOptions<AppSettings> appSettings //IOption é uma opção de leitura que aspnet da como suporte, possui o valor que é exposto atraves da classe de representação que no caso é o AppSettings
+            )
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _appSettings = appSettings.Value; //Pega as configurações do AppSettings.Json em tempo de execução 
         }
 
         [HttpPost("nova-conta")]
@@ -38,7 +49,7 @@ namespace GeekShoppingApp.Identity.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return Ok(); //Se funcionar chegando nesta linha retorna 200Ok sucesso 
+                return Ok(await GerarJwt(usuarioRegistro.Email)); //Se funcionar chegando nesta linha retorna 200Ok sucesso e gera o Token 
             }
 
             return BadRequest(); //Caso o result succeded não funcione retorna 
@@ -58,12 +69,74 @@ namespace GeekShoppingApp.Identity.Controllers
 
             if (result.Succeeded)
             {
-                return Ok();
+                return Ok(await GerarJwt(usuarioLogin.Email));
             }
             return BadRequest();
 
         }
 
-    }     
-    
+        //Quando este metodo de Gerar JWT for chamado estará em um fluxo em que o usuário já foi autenticado
+        //Portanto para esse fluxo não tem por que verificar se foi encontrado ou não.
+        private async Task<UsuarioRespostaLogin> GerarJwt(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email); //buscando usuário 
+            var claims = await _userManager.GetClaimsAsync(user); //Gerando lista de claims
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())); //valor unico para o token
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString())); //Quando o token vai expirar
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64)); //Quando o token foi emitido
+
+            //Roles: Um papel
+            //Claims: Um dado aberto, pode representar tanto uma permissão quanto um dado do usuário
+            //Dentro de Claims é acrescentado as roles(papeis) do usuário represetados pelo nome "role"
+            foreach(var userRole in userRoles)
+            {
+                claims.Add(new Claim("role", userRole));
+            }
+
+            //Estancia do identity com todas as claims em um lugar só
+            var identityClaims = new ClaimsIdentity();
+            identityClaims.AddClaims(claims);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret); //Gera uma squencia de bites para gerar a chave 
+
+
+            //Criando o Token
+            var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
+            {
+                Issuer = _appSettings.Emissor, //Quem é o emissor 
+                Audience = _appSettings.ValidoEm, //Audiencia 
+                Subject = identityClaims, //Dados do usuário, coleção de claims 
+                Expires = DateTime.UtcNow.AddHours(_appSettings.ExpiracaoHoras), //expiração em horas no formato utc, duas hora pra frente no padrão utc
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) //chave por parametro e o tipo de algoritmo de cryptografia 
+            });
+
+            //gera o token codificado com base na chave(key)
+            var encodedToken = tokenHandler.WriteToken(token);
+
+
+            //Preenchar  a resposta  
+            var response = new UsuarioRespostaLogin
+            {
+                AcessToken = encodedToken, //O proprio token codificado 
+                ExpireIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds, //pegando os segundo totais da hora exata da geração do token, jogando duas hora a frente e retornando em segundos para saber exatamente quando o token vai expirar  
+                UsuarioToken = new UsuarioToken //
+                {
+                    Id = user.Id, //Id
+                    Email = user.Email, //Email 
+                    Claims = claims.Select(c => new UsuarioClaim { Type = c.Type, Value = c.Value }) //Passando claims do usuário para manipular em json 
+                }
+            };
+
+            return response;
+        }
+
+        private static long ToUnixEpochDate(DateTime date)
+            => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
+       
+    } 
 }
