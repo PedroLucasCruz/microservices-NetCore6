@@ -91,3 +91,4 @@ C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingAp
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\obj\Debug\netcoreapp3.1\GeekShoppingApp.Identity.dll
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\obj\Debug\netcoreapp3.1\GeekShoppingApp.Identity.pdb
 C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\obj\Debug\netcoreapp3.1\GeekShoppingApp.Identity.genruntimeconfig.cache
+C:\Users\pedro\Documents\_GIT\microservices-NetCore6\GeekShooping\GeekShoppingApp.Identity\obj\Debug\netcoreapp3.1\GeekShoppingApp.Identity.csproj.AssemblyReference.cache

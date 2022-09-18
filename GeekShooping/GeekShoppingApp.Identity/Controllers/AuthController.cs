@@ -1,15 +1,15 @@
-﻿using GeekShoppingApp.Identity.Extensions;
-using GeekShoppingApp.Identity.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using GeekShoppingApp.Identity.Extensions;
+using GeekShoppingApp.Identity.Models;
 
 
 
@@ -17,7 +17,7 @@ namespace GeekShoppingApp.Identity.Controllers
 {
     [ApiController] //Usado para liberar os entendimento dos schemas do swagger, decorando com está anotação você esta dizendo que ela é uma api controller, o schemas trafegam json e não formulario
     [Route("api/identidade")]
-    public class AuthController : Controller
+    public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -37,7 +37,10 @@ namespace GeekShoppingApp.Identity.Controllers
         [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistro usuarioRegistro)
         {
-            if (!ModelState.IsValid) return BadRequest(); //Validação da model de registro de usuário
+          
+            if (!ModelState.IsValid) //Validação da model de registro de usuário
+                return CustomResponse(ModelState); //Custom response de dentro da MainController
+          
             var user = new IdentityUser //Estancia do identity recebendo no UserName o Email para que o usuario utilze o email para autenticação no usuario
             {
                 UserName = usuarioRegistro.Email,
@@ -48,17 +51,28 @@ namespace GeekShoppingApp.Identity.Controllers
             var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, false);
-                return Ok(await GerarJwt(usuarioRegistro.Email)); //Se funcionar chegando nesta linha retorna 200Ok sucesso e gera o Token 
+               // await _signInManager.SignInAsync(user, false);//Não estamos fazendo login, apenas gerando login, então este metodo está fazendo o login na aplicãção e não precisa chamar
+                return CustomResponse(await GerarJwt(usuarioRegistro.Email)); //Se funcionar chegando nesta linha retorna 200Ok sucesso e gera o Token 
             }
 
-            return BadRequest(); //Caso o result succeded não funcione retorna 
+            //result.Errors.Select(x =>
+            //{
+            //    AdicionarErroProcessamento(x.Description);
+            //    return x.Description;
+            //});
+
+            foreach (var error in result.Errors)
+            {
+                AdicionarErroProcessamento(error.Description);
+            }
+
+            return CustomResponse(); //Caso o result succeded não funcione retorna 
         }
 
         [HttpPost("autenticar")]
         public async Task<ActionResult> Login(UsuarioLogin usuarioLogin)
         {
-            if (!ModelState.IsValid) return BadRequest(); //Validação da model de registro de usuário
+            if (!ModelState.IsValid) return CustomResponse(ModelState); //Validação da model de registro de usuário
 
             var result = await _signInManager.PasswordSignInAsync(
                 usuarioLogin.Email, //Parametro para validar pelo Email/Usuario
@@ -69,10 +83,17 @@ namespace GeekShoppingApp.Identity.Controllers
 
             if (result.Succeeded)
             {
-                return Ok(await GerarJwt(usuarioLogin.Email));
+                return CustomResponse(await GerarJwt(usuarioLogin.Email));
             }
-            return BadRequest();
 
+            if (result.IsLockedOut)
+            {
+                AdicionarErroProcessamento("Usuario temporariamente bloqueado por tentativa inválidas");
+                return CustomResponse();
+            }
+
+            AdicionarErroProcessamento("Usuário ou Senha incorretos");
+            return CustomResponse();
         }
 
         //Quando este metodo de Gerar JWT for chamado estará em um fluxo em que o usuário já foi autenticado
