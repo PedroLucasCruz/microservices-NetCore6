@@ -10,8 +10,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using GeekShoppingApp.Identity.Extensions;
 using GeekShoppingApp.Identity.Models;
-
-
+using System.Collections.Generic;
 
 namespace GeekShoppingApp.Identity.Controllers
 {
@@ -55,12 +54,6 @@ namespace GeekShoppingApp.Identity.Controllers
                 return CustomResponse(await GerarJwt(usuarioRegistro.Email)); //Se funcionar chegando nesta linha retorna 200Ok sucesso e gera o Token 
             }
 
-            //result.Errors.Select(x =>
-            //{
-            //    AdicionarErroProcessamento(x.Description);
-            //    return x.Description;
-            //});
-
             foreach (var error in result.Errors)
             {
                 AdicionarErroProcessamento(error.Description);
@@ -102,7 +95,18 @@ namespace GeekShoppingApp.Identity.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email); //buscando usuário 
             var claims = await _userManager.GetClaimsAsync(user); //Gerando lista de claims
+
+            var identityClaims = await ObterClaimsUsuario(claims, user); //Obter as claims 
+            var encodedToken = CodificarToken(identityClaims); //Codificar o Token
+
+          return  ObterRespostaToken(encodedToken, user, claims);
+
+        }
+
+        private async Task<ClaimsIdentity> ObterClaimsUsuario(ICollection<Claim> claims, IdentityUser user)
+        {
             var userRoles = await _userManager.GetRolesAsync(user);
+
 
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
@@ -113,7 +117,7 @@ namespace GeekShoppingApp.Identity.Controllers
             //Roles: Um papel
             //Claims: Um dado aberto, pode representar tanto uma permissão quanto um dado do usuário
             //Dentro de Claims é acrescentado as roles(papeis) do usuário represetados pelo nome "role"
-            foreach(var userRole in userRoles)
+            foreach (var userRole in userRoles)
             {
                 claims.Add(new Claim("role", userRole));
             }
@@ -122,9 +126,13 @@ namespace GeekShoppingApp.Identity.Controllers
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(claims);
 
+            return identityClaims;
+        }
+
+        private string CodificarToken(ClaimsIdentity identityClaims)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret); //Gera uma squencia de bites para gerar a chave 
-
 
             //Criando o Token
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
@@ -137,9 +145,11 @@ namespace GeekShoppingApp.Identity.Controllers
             });
 
             //gera o token codificado com base na chave(key)
-            var encodedToken = tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(token);
+        }
 
-
+        private UsuarioRespostaLogin ObterRespostaToken(string encodedToken, IdentityUser user, IEnumerable<Claim> claims)
+        {
             //Preenchar  a resposta  
             var response = new UsuarioRespostaLogin
             {
@@ -155,6 +165,7 @@ namespace GeekShoppingApp.Identity.Controllers
 
             return response;
         }
+
 
         private static long ToUnixEpochDate(DateTime date)
             => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
