@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeekShoppingClient.Web.Controllers
 {
    
+   
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -15,10 +16,11 @@ namespace GeekShoppingClient.Web.Controllers
         }
 
         [HttpGet]
-        [Route("product/GetAll")]        
         //[Authorize]
+        [Route("product/GetAll")] 
         public async Task<IActionResult> getAll()
         {
+
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
 
             IEnumerable<ProductModel> products = await _productService.FindAllProducts();

@@ -11,6 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 using GeekShoppingApp.Identity.Extensions;
 using GeekShoppingApp.Identity.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekShoppingApp.Identity.Controllers
 {
@@ -21,16 +23,19 @@ namespace GeekShoppingApp.Identity.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
+       
 
         public AuthController(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IOptions<AppSettings> appSettings //IOption é uma opção de leitura que aspnet da como suporte, possui o valor que é exposto atraves da classe de representação que no caso é o AppSettings
+          
             )
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value; //Pega as configurações do AppSettings.Json em tempo de execução 
+          
         }
 
         [HttpPost("nova-conta")]
@@ -50,6 +55,7 @@ namespace GeekShoppingApp.Identity.Controllers
             var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
             if (result.Succeeded)
             {
+             
                // await _signInManager.SignInAsync(user, false);//Não estamos fazendo login, apenas gerando login, então este metodo está fazendo o login na aplicãção e não precisa chamar
                 return CustomResponse(await GerarJwt(usuarioRegistro.Email)); //Se funcionar chegando nesta linha retorna 200Ok sucesso e gera o Token 
             }
@@ -88,6 +94,28 @@ namespace GeekShoppingApp.Identity.Controllers
             AdicionarErroProcessamento("Usuário ou Senha incorretos");
             return CustomResponse();
         }
+
+        [HttpPost("deslogar")]
+        public async Task<ActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+           
+            return CustomResponse();
+        }
+
+        //Retornar o Usuario logado
+        //Retornar qualquer dado do usuário deve ser passado o bearer token na autorização para retornar os dados
+        //Se o Bearer token não for passado não retorna nada
+        [Authorize]
+        [HttpPost("retornar-usuario-logado")]
+        public async Task<ActionResult> GetUserLogin()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (HttpContext.User.Identity.IsAuthenticated)
+            return CustomResponse(user);               
+            return CustomResponse();         
+        }
+
 
         //Quando este metodo de Gerar JWT for chamado estará em um fluxo em que o usuário já foi autenticado
         //Portanto para esse fluxo não tem por que verificar se foi encontrado ou não.

@@ -21,22 +21,23 @@ namespace GeekShoppingApp.Identity.Configuration
            services.AddDbContext<ApplicationDbContext>(
            options =>
            options.UseSqlServer(configuration.GetConnectionString("GeekShoppingIdentityContextConnection")));
+           //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             //Configuração de suporte ao Identity             
-            services.AddDefaultIdentity<IdentityUser>()
+           services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>() //Adicionando as regras de perfil de usuario
 
                 .AddErrorDescriber<IdentityMensagenPortugues>() //Implementa IdentityMensagenPortugues para sobre escrever os valores da classe, essa classe herda de IdentityErrorDescriber
 
                 .AddEntityFrameworkStores<ApplicationDbContext>() //especificando que você vai trabalhar com eneity framework
 
-                .AddDefaultTokenProviders(); //Token que são gerados, criptografia para reconhecimento e autenticação 
+                .AddDefaultTokenProviders(); //Adicionado recursos, autenticação por email etc, Token que são gerados, criptografia para reconhecimento e autenticação 
 
             #region //JWT
 
             var appSettingsSection = configuration.GetSection("AppSettings"); //Pegou o nó do arquivo de configuração appSettings
             services.Configure<AppSettings>(appSettingsSection); //Configure o appsetting atraves do appseting section, configurando no middlaware/pipelane
-                                                                 //para que a classe AppSettings represente os dados da sessão appSettingsSection vindo das configurações
+                                                                  //para que a classe AppSettings represente os dados da sessão appSettingsSection vindo das configurações
 
             var appSettings = appSettingsSection.Get<AppSettings>(); //Obtem a AppSettings já populada
             var key = Encoding.ASCII.GetBytes(appSettings.Secret); //Transforma a chave do token em uma sequencia de bytes para uso mais adiante
@@ -51,7 +52,7 @@ namespace GeekShoppingApp.Identity.Configuration
 
             {
                 bearerOptions.RequireHttpsMetadata = true; //requerer acesso pelo https por segurança 
-                bearerOptions.SaveToken = true; //dizer que o token vai ser guardado na estanci assim que o login for realizado com sucesso
+                bearerOptions.SaveToken = true; //Esse cara que guarda o Token no httpContext para validar se está logado, dizer que o token vai ser guardado na estanci assim que o login for realizado com sucesso
                 bearerOptions.TokenValidationParameters = new TokenValidationParameters //parametro de validação do token logo a baixo
                 {
                     ValidateIssuerSigningKey = true, //Audiencia quer dizer onde o token pode ser utilizado, pode ser utilziado em dominio X ou Y, você vai validar com base na assinatura

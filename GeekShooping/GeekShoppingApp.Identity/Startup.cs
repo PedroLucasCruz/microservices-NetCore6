@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 #endregion
 
 using GeekShoppingApp.Identity.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace GeekShoppingApp.Identity
 {
@@ -46,6 +48,7 @@ namespace GeekShoppingApp.Identity
               
         public void ConfigureServices(IServiceCollection services)
         {
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddIdentityConfiguration(Configuration); //Passando como parametro a interface de configuracao para tratar os dados que são precisos
             #region  Configuração feita em arquivo separado para respeita boas praticas

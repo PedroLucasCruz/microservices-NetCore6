@@ -2,6 +2,9 @@
 using GeekShoppingClient.Web.Services.IServices;
 using GeekShoppingClient.Web.Services;
 
+using GeekShoppingClient.Web.Configurations;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 namespace GeekShoppingClient.Web
 {
     public class Startup : IStartup
@@ -14,15 +17,17 @@ namespace GeekShoppingClient.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //services.AddScoped<IProductRepository, ProductRepository>();
-
+          
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #region httpClientFactory
 
             services.AddHttpClient<IProductService, ProductService>(
-                c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"])); //injecao de product service para uso do httpClienteFactory
-            //services.AddScoped<IProductService, ProductService>();
+                c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"]));
+                                                                                     
             #endregion
+
+
+            services.AddIdentityConfiguration();
 
             services.AddControllersWithViews();
             
@@ -30,10 +35,8 @@ namespace GeekShoppingClient.Web
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
         {
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseRouting();
-        }
+            app.UseApiConfiguration();
+        } 
     }
 
     public interface IStartup
@@ -61,11 +64,11 @@ namespace GeekShoppingClient.Web
             }
 
             startup.Configure(app, app.Environment);
-            
+
             //adicionado
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller}/{action=Index}/{id?}");
+               name: "default",
+               pattern: "{controller}/{action=Index}/{id?}");
             app.MapFallbackToFile("index.html");
 
             app.Run();

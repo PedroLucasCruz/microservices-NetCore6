@@ -1,5 +1,6 @@
 ﻿using GeekShopping.ProductAPI.Data.ValueObjects;
 using GeekShopping.ProductAPI.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace GeekShopping.ProductAPI.Controllers
                 throw new ArgumentNullException(nameof(repository));
         }
 
+    
         [HttpGet]
         public async Task<IActionResult> FindAll()
         {

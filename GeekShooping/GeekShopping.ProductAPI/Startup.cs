@@ -37,6 +37,8 @@ namespace GeekShopping.ProductAPI
 
             services.AddDatabaseConfiguration(Configuration);
 
+            services.AddIdentityConfiguration();
+
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
@@ -45,17 +47,8 @@ namespace GeekShopping.ProductAPI
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
-        {
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-
-            app.UseHttpsRedirection();
-            app.UseAuthorization();
-            app.MapControllers();
+        {  
+            app.UseApiConfiguration(app, environment);
         }
     }
     public interface IStartup
@@ -75,9 +68,7 @@ namespace GeekShopping.ProductAPI
             startup.ConfigureServices(WebAppBuilder.Services);
             var app = WebAppBuilder.Build();
 
-#if (DEBUG)
 
-#endif
 
             startup.Configure(app, app.Environment);
 
