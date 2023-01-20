@@ -19,8 +19,7 @@ namespace GeekShoppingApp.Identity.Configuration
         {
 
            services.AddDbContext<ApplicationDbContext>(
-           options =>
-           options.UseSqlServer(configuration.GetConnectionString("GeekShoppingIdentityContextConnection")));
+           options => options.UseSqlServer(configuration.GetConnectionString("ConnectionString")));
            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             //Configuração de suporte ao Identity             

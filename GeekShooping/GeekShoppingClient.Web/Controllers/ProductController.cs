@@ -1,4 +1,5 @@
 ﻿using GeekShoppingClient.Web.Models;
+using GeekShoppingClient.Web.Service.IServices;
 using GeekShoppingClient.Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,12 @@ namespace GeekShoppingClient.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IAutenticacaoService _autenticacaiService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IAutenticacaoService autenticacaoService)
         {
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+            _autenticacaiService = autenticacaoService ?? throw new ArgumentNullException(nameof(autenticacaoService));
         }
 
         [HttpGet]
@@ -20,6 +23,7 @@ namespace GeekShoppingClient.Web.Controllers
         [Route("product/GetAll")] 
         public async Task<IActionResult> getAll()
         {
+            var retorno = _autenticacaiService.EstaAutenticado();
 
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
 
@@ -57,6 +61,6 @@ namespace GeekShoppingClient.Web.Controllers
             bool products = await _productService.Delete(Id);
             return Ok(products);
         }
-       
+
     }
 }

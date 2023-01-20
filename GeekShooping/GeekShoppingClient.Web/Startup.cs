@@ -4,6 +4,8 @@ using GeekShoppingClient.Web.Services;
 
 using GeekShoppingClient.Web.Configurations;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using GeekShoppingClient.Web.Service.IServices;
+using GeekShoppingClient.Web.Service;
 
 namespace GeekShoppingClient.Web
 {
@@ -19,6 +21,8 @@ namespace GeekShoppingClient.Web
         {
           
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IAutenticacaoService, AutenticacaoService>();
+
             #region httpClientFactory
 
             services.AddHttpClient<IProductService, ProductService>(
@@ -27,15 +31,14 @@ namespace GeekShoppingClient.Web
             #endregion
 
 
-            services.AddIdentityConfiguration();
-
             services.AddControllersWithViews();
-            
+            services.RegistrarServices();   
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
         {
-            app.UseApiConfiguration();
+            app.UseApiConfiguration(environment);
+       
         } 
     }
 

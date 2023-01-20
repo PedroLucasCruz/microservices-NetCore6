@@ -6,5 +6,6 @@ namespace GeekShoppingClient.Web.Service.IServices
     {
         Task<string> Login(UsuarioLogin usuarioLogin);
         Task<string> Registro(UsuarioRegistro usuarioRegistro);
+        bool EstaAutenticado();
     }
 }
