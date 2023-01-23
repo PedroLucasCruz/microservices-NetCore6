@@ -26,7 +26,7 @@ namespace GeekShoppingClient.Web.Configurations
             app.UseRouting();
 
             app.UseIdentityConfiguration();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");

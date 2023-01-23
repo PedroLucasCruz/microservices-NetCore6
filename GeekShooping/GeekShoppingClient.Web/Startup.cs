@@ -4,8 +4,7 @@ using GeekShoppingClient.Web.Services;
 
 using GeekShoppingClient.Web.Configurations;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using GeekShoppingClient.Web.Service.IServices;
-using GeekShoppingClient.Web.Service;
+
 
 namespace GeekShoppingClient.Web
 {
@@ -21,18 +20,21 @@ namespace GeekShoppingClient.Web
         {
           
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IAutenticacaoService, AutenticacaoService>();
-
-            #region httpClientFactory
-
-            services.AddHttpClient<IProductService, ProductService>(
-                c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"]));
-                                                                                     
-            #endregion
 
 
             services.AddControllersWithViews();
-            services.RegistrarServices();   
+
+            #region Configuração do service Cliente
+            
+            services.RegistrarServices(Configuration);
+
+            //services.AddHttpClient<IProductService, ProductService>(
+            //    c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPISwagger"]));
+
+            //services.AddHttpClient<IAutenticacaoService, AutenticacaoService>(
+            //  c => c.BaseAddress = new Uri(Configuration["ServiceUrls:AutenticacaoAPI"]));
+            #endregion
+
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
@@ -67,12 +69,7 @@ namespace GeekShoppingClient.Web
             }
 
             startup.Configure(app, app.Environment);
-
-            //adicionado
-            app.MapControllerRoute(
-               name: "default",
-               pattern: "{controller}/{action=Index}/{id?}");
-            app.MapFallbackToFile("index.html");
+                    
 
             app.Run();
 

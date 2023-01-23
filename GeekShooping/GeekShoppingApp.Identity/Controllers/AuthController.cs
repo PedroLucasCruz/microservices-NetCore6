@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace GeekShoppingApp.Identity.Controllers
 {
     [ApiController] //Usado para liberar os entendimento dos schemas do swagger, decorando com está anotação você esta dizendo que ela é uma api controller, o schemas trafegam json e não formulario
-    [Route("api/identidade")]
+    [Route("api/identidade/[controller]")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -69,7 +69,7 @@ namespace GeekShoppingApp.Identity.Controllers
         }
 
         [HttpPost("autenticar")]
-        public async Task<ActionResult> Login(UsuarioLogin usuarioLogin)
+        public async Task<ActionResult> Login([FromBody] UsuarioLogin usuarioLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState); //Validação da model de registro de usuário
 

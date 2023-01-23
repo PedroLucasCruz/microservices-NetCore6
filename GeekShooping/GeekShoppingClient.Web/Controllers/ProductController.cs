@@ -1,5 +1,5 @@
-﻿using GeekShoppingClient.Web.Models;
-using GeekShoppingClient.Web.Service.IServices;
+﻿using GeekShoppingApp.Identity.Controllers;
+using GeekShoppingClient.Web.Models;
 using GeekShoppingClient.Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,23 +7,20 @@ namespace GeekShoppingClient.Web.Controllers
 {
    
    
-    public class ProductController : Controller
+    public class ProductController : MainController
     {
         private readonly IProductService _productService;
-        private readonly IAutenticacaoService _autenticacaiService;
-
-        public ProductController(IProductService productService, IAutenticacaoService autenticacaoService)
+      
+        public ProductController(IProductService productService)
         {
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
-            _autenticacaiService = autenticacaoService ?? throw new ArgumentNullException(nameof(autenticacaoService));
+     
         }
 
-        [HttpGet]
-        //[Authorize]
-        [Route("product/GetAll")] 
+        [HttpGet("product/GetAll")]
         public async Task<IActionResult> getAll()
         {
-            var retorno = _autenticacaiService.EstaAutenticado();
+          
 
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
 
@@ -31,6 +28,7 @@ namespace GeekShoppingClient.Web.Controllers
             return Ok(products);
         }
 
+        [HttpGet("product/FindProductById")]
         public async Task<IActionResult> FindProductById([FromQuery] long Id)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
@@ -39,6 +37,7 @@ namespace GeekShoppingClient.Web.Controllers
             return Ok(products);
         }
 
+        [HttpPost("product/CreateProduct")]
         public async Task<IActionResult> CreateProduct(ProductModel productModel)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
@@ -47,13 +46,14 @@ namespace GeekShoppingClient.Web.Controllers
                 return Ok(products);
         }
 
+        [HttpPut("product/CreateProduct")]
         public async Task<IActionResult> UpdateProduct(ProductModel productModel)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
             ProductModel products = await _productService.UpdateProduct(productModel);
             return Ok(products);
         }
-
+        [HttpDelete("product/DeleteProduct")]
         public async Task<IActionResult> DeleteProduct([FromQuery] long Id)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");

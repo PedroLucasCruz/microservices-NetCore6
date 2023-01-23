@@ -17,17 +17,27 @@ namespace GeekShoppingClient.Web.Utils
             JsonSerializerOptions option = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             return JsonSerializer.Deserialize<T>(dataAsString, option);
         }
-        
+
+        private static StringContent TratarSerialize<T>(T data)
+        {
+            var dataAsString = JsonSerializer.Serialize(data);
+            var content = new StringContent(dataAsString, Encoding.UTF8, "application/json");
+            content.Headers.ContentType = contentType;
+
+            return content;
+
+        }
+
         public static Task<HttpResponseMessage> PostAsJson<T>(this HttpClient httpClient, string url, T data)
         {
   
-            return   httpClient.PostAsJsonAsync(url, TratarSerialize(data));
+            return   httpClient.PostAsync(url, TratarSerialize(data));
         }
 
         public static Task<HttpResponseMessage> PutAsJson<T>(this HttpClient httpClient, string url, T data)
         {
          
-            return httpClient.PutAsJsonAsync(url, TratarSerialize(data));
+            return httpClient.PutAsync(url, TratarSerialize(data));
         }
 
         //Get com parametro
@@ -42,14 +52,6 @@ namespace GeekShoppingClient.Web.Utils
             return httpClient.GetAsync(url);
         }
 
-        private static StringContent TratarSerialize<T>(T data)
-        {
-            var dataAsString = JsonSerializer.Serialize(data);
-            var content = new StringContent(dataAsString, Encoding.UTF8, "application/json");
-            content.Headers.ContentType = contentType;
-
-            return content;
-        }
     }
 }
 
