@@ -18,7 +18,8 @@ namespace GeekShoppingClient.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            services.AddIdentityConfiguration();
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
@@ -27,12 +28,7 @@ namespace GeekShoppingClient.Web
             #region Configuração do service Cliente
             
             services.RegistrarServices(Configuration);
-
-            //services.AddHttpClient<IProductService, ProductService>(
-            //    c => c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPISwagger"]));
-
-            //services.AddHttpClient<IAutenticacaoService, AutenticacaoService>(
-            //  c => c.BaseAddress = new Uri(Configuration["ServiceUrls:AutenticacaoAPI"]));
+                
             #endregion
 
         }

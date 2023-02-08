@@ -98,7 +98,7 @@ namespace GeekShoppingApp.Identity.Controllers
         [HttpPost("deslogar")]
         public async Task<ActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+           await _signInManager.SignOutAsync();
            
             return CustomResponse();
         }

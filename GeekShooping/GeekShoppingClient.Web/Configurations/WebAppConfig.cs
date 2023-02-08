@@ -25,7 +25,7 @@ namespace GeekShoppingClient.Web.Configurations
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseIdentityConfiguration();
+            app.UseIdentityConfiguration(); //Este metodo que se refere ao identity depende da orgem de execução
 
             app.UseEndpoints(endpoints =>
             {

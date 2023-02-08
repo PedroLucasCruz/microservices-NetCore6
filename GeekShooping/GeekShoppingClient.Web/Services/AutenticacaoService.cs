@@ -36,7 +36,7 @@ namespace GeekShoppingClient.Web.Services
         {
             var loginContent = new StringContent(
                 JsonSerializer.Serialize(usuarioRegistro), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("https://localhost:5001/api/identidade/nova-conta", loginContent);
+            var response = await _httpClient.PostAsync(BasePath + "nova-conta", loginContent);
 
             return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
@@ -45,6 +45,15 @@ namespace GeekShoppingClient.Web.Services
         {
             throw new NotImplementedException();
         }
-        
+
+        public async void Logout()
+        {
+           // var response = await _httpClient.GetAsync(BasePath);
+           // return await response.ReadContentAs<List<ProductModel>>();
+
+            var response = await _httpClient.GetAsync(BasePath + "deslogar");
+
+             JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
+        }
     }
 }
