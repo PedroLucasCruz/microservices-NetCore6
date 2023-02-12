@@ -1,6 +1,7 @@
 ﻿using GeekShoppingApp.Identity.Controllers;
 using GeekShoppingClient.Web.Models;
 using GeekShoppingClient.Web.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShoppingClient.Web.Controllers
@@ -17,6 +18,7 @@ namespace GeekShoppingClient.Web.Controllers
      
         }
 
+        [Authorize]
         [HttpGet("product/GetAll")]
         public async Task<IActionResult> getAll()
         {

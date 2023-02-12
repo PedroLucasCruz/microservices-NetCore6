@@ -50,6 +50,8 @@ namespace GeekShoppingApp.Identity.Configuration
             }).AddJwtBearer(bearerOptions => //quando você usa AddJwtBearer, você está dizendo que está adicionado suporte para este tipo especifico de token
 
             {
+                bearerOptions.RequireHttpsMetadata = false;
+
                 bearerOptions.RequireHttpsMetadata = true; //requerer acesso pelo https por segurança 
                 bearerOptions.SaveToken = true; //Esse cara que guarda o Token no httpContext para validar se está logado, dizer que o token vai ser guardado na estanci assim que o login for realizado com sucesso
                 bearerOptions.TokenValidationParameters = new TokenValidationParameters //parametro de validação do token logo a baixo

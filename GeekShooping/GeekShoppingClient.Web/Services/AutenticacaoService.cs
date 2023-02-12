@@ -32,13 +32,13 @@ namespace GeekShoppingClient.Web.Services
 
         }
 
-        public async Task<string> Registro(UsuarioRegistro usuarioRegistro)
+        public async Task<UsuarioRespostaLoginModel> Registro(UsuarioRegistro usuarioRegistro)
         {
             var loginContent = new StringContent(
                 JsonSerializer.Serialize(usuarioRegistro), Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync(BasePath + "nova-conta", loginContent);
 
-            return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
+            return JsonSerializer.Deserialize<UsuarioRespostaLoginModel>(await response.Content.ReadAsStringAsync());
         }
 
         public bool EstaAutenticado()

@@ -1,7 +1,11 @@
 ﻿using GeekShoppingApp.Identity.Controllers;
+using GeekShoppingClient.Web.Configurations.IConfig;
 using GeekShoppingClient.Web.Models;
 using GeekShoppingClient.Web.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GeekShoppingClient.Web.Controllers
 {
@@ -11,19 +15,23 @@ namespace GeekShoppingClient.Web.Controllers
     {
         //Continuar da aula M04V04 - Models, Views e Controllers de login nos 01:44 min
         private readonly IAutenticacaoService _autenticacaoService;
-
-        public IdentidadeController(IAutenticacaoService autenticacaoService)
+        private readonly IJwtConfig _jwtConfig;
+        public IdentidadeController(IAutenticacaoService autenticacaoService, IJwtConfig jwtConfig )
         {
             _autenticacaoService = autenticacaoService;
+            _jwtConfig = jwtConfig;
         }
-
-
-        [HttpPost("/autenticar")]
+             
+        [HttpPost("autenticar")]
         public async Task<IActionResult> Login(UsuarioLogin usuarioLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            return  CustomResponse(await _autenticacaoService.Login(usuarioLogin));
+            var resposta = await _autenticacaoService.Login(usuarioLogin);
+
+            await RealizarLoginClient(resposta);
+
+            return  CustomResponse(resposta);
         }
 
         [HttpPost("/nova-conta")]
@@ -31,7 +39,11 @@ namespace GeekShoppingClient.Web.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            return CustomResponse(await _autenticacaoService.Registro(usuarioRegistro));
+            var resposta = await _autenticacaoService.Registro(usuarioRegistro);
+
+            await RealizarLoginClient(resposta);
+
+            return CustomResponse(resposta);
         }
 
         [HttpPost("/sair")]
@@ -44,6 +56,37 @@ namespace GeekShoppingClient.Web.Controllers
             return CustomResponse();
         }
 
+        private async Task RealizarLoginClient(UsuarioRespostaLoginModel resposta)
+        {
+            var token = _jwtConfig.ObterTokenFormatado(resposta.AcessToken);
 
+            //Adicionar as claims retornadas do serviço
+            var claims = new List<Claim>();
+            claims.Add(new Claim("JWT", resposta.AcessToken));
+            claims.AddRange(token.Claims);
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60), //Quanto tempo ele vai durar baseado no sistema de contagem universal
+                IsPersistent = true //Se ele é persistente, por que não vai durar apenas um request vai durar multiplos requests dentro do periodo de 60 minutos
+            };
+
+            //Configuração Usando Cookie para autenticar
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity), authProperties);
+
+
+            ///Configuração usando JwtBearer Token 
+            await HttpContext.SignInAsync("JwtBearer",
+                              new ClaimsPrincipal(claimsIdentity),
+                              new AuthenticationProperties
+                              {
+                                  ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
+                                  IsPersistent = true
+                              });
+        }
     }
 }

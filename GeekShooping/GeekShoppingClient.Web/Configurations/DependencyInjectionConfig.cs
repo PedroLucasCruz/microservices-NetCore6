@@ -1,4 +1,6 @@
-﻿using GeekShoppingClient.Web.Services;
+﻿using GeekShoppingClient.Web.Configurations.IConfig;
+using GeekShoppingClient.Web.Services;
+
 using GeekShoppingClient.Web.Services.IServices;
 
 namespace GeekShoppingClient.Web.Configurations
@@ -12,6 +14,8 @@ namespace GeekShoppingClient.Web.Configurations
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>(
                 c => c.BaseAddress = new Uri(configuration["ServiceUrls:AutenticacaoAPI"]));
+
+            services.AddScoped<IJwtConfig, JwtConfig>();
         }
     }
 }

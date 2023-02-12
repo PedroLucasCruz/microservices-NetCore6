@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
+using Microsoft.IdentityModel.Tokens;
 
 namespace GeekShoppingClient.Web.Configurations
 {
@@ -15,11 +15,17 @@ namespace GeekShoppingClient.Web.Configurations
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(bearerOptions => //quando você usa AddJwtBearer, você está dizendo que está adicionado suporte para este tipo especifico de token
+               
+            .AddJwtBearer("JwtBearer",bearerOptions => //quando você usa AddJwtBearer, você está dizendo que está adicionado suporte para este tipo especifico de token
             {
                 //bearerOptions.Configuration.
+                bearerOptions.Authority = "https://localhost:5001/";
+                bearerOptions.Audience = "https://localhost";
+                bearerOptions.RequireHttpsMetadata = false;
+                           
 
             })
+         
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/Url"; //quando o usuario não estiver logado e quiser encaminhar para uma area da aplicação

@@ -20,7 +20,12 @@ namespace GeekShoppingClient.Web.Utils
 
         private static StringContent TratarSerialize<T>(T data)
         {
-            var dataAsString = JsonSerializer.Serialize(data);
+            //Essa propriedade PropertyNameCaseInsensitive diz que o nome das propriedade no retorno em JSon não tera diferentes entre maisculas e minusculas 
+            var options = new JsonSerializerOptions {
+                PropertyNameCaseInsensitive = true,
+             };
+
+            var dataAsString = JsonSerializer.Serialize(data, options);
             var content = new StringContent(dataAsString, Encoding.UTF8, "application/json");
             content.Headers.ContentType = contentType;
 
