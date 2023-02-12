@@ -4,6 +4,7 @@ using GeekShoppingClient.Web.Models;
 using GeekShoppingClient.Web.Services.IServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -34,7 +35,7 @@ namespace GeekShoppingClient.Web.Controllers
             return  CustomResponse(resposta);
         }
 
-        [HttpPost("/nova-conta")]
+        [HttpPost("nova-conta")]
         public async Task<IActionResult> Registro(UsuarioRegistro usuarioRegistro)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -46,8 +47,8 @@ namespace GeekShoppingClient.Web.Controllers
             return CustomResponse(resposta);
         }
 
-        [HttpPost("/sair")]
-        public async Task<IActionResult> Logout(UsuarioRegistro usuarioRegistro)
+        [HttpPost("sair")]
+        public async Task<IActionResult> Logout()
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
@@ -69,18 +70,20 @@ namespace GeekShoppingClient.Web.Controllers
 
             var authProperties = new AuthenticationProperties
             {
+                AllowRefresh = true,
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60), //Quanto tempo ele vai durar baseado no sistema de contagem universal
-                IsPersistent = true //Se ele é persistente, por que não vai durar apenas um request vai durar multiplos requests dentro do periodo de 60 minutos
+                IsPersistent = true, //Se ele é persistente, por que não vai durar apenas um request vai durar multiplos requests dentro do periodo de 60 minutos
+                IssuedUtc = DateTime.UtcNow
             };
 
             //Configuração Usando Cookie para autenticar
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity), authProperties);
-
+            //await HttpContext.SignInAsync(
+            //    CookieAuthenticationDefaults.AuthenticationScheme,
+            //    new ClaimsPrincipal(claimsIdentity),
+            //    authProperties);
 
             ///Configuração usando JwtBearer Token 
-            await HttpContext.SignInAsync("JwtBearer",
+            await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme,
                               new ClaimsPrincipal(claimsIdentity),
                               new AuthenticationProperties
                               {

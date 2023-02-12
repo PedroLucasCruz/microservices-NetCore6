@@ -51,9 +51,9 @@ namespace GeekShoppingClient.Web.Services
            // var response = await _httpClient.GetAsync(BasePath);
            // return await response.ReadContentAs<List<ProductModel>>();
 
-            var response = await _httpClient.GetAsync(BasePath + "deslogar");
+          await _httpClient.GetAsync(BasePath + "deslogar");
 
-             JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
+             //JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
     }
 }
