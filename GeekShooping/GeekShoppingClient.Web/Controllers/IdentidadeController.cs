@@ -1,5 +1,6 @@
 ﻿using GeekShoppingApp.Identity.Controllers;
 using GeekShoppingClient.Web.Configurations.IConfig;
+using GeekShoppingClient.Web.Extensions;
 using GeekShoppingClient.Web.Models;
 using GeekShoppingClient.Web.Services.IServices;
 using Microsoft.AspNetCore.Authentication;
@@ -17,10 +18,17 @@ namespace GeekShoppingClient.Web.Controllers
         //Continuar da aula M04V04 - Models, Views e Controllers de login nos 01:44 min
         private readonly IAutenticacaoService _autenticacaoService;
         private readonly IJwtConfig _jwtConfig;
-        public IdentidadeController(IAutenticacaoService autenticacaoService, IJwtConfig jwtConfig )
+        private readonly IUser _user;
+
+        public IdentidadeController(
+            IAutenticacaoService autenticacaoService,
+            IJwtConfig jwtConfig,
+            IUser user
+            )
         {
             _autenticacaoService = autenticacaoService;
             _jwtConfig = jwtConfig;
+            _user = user;
         }
              
         [HttpPost("autenticar")]
@@ -52,9 +60,26 @@ namespace GeekShoppingClient.Web.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
+            //Desloga o usuario la na camada do Identity 
             _autenticacaoService.Logout(); //retorna vazio do identity
-            
+
+            //Metodo para deslogar o usuário do contexto
+            await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+
+
             return CustomResponse();
+        }
+
+        [HttpGet("EstaAutenticado")]
+        public async Task<IActionResult> EstaAutenticado()
+        {
+            return CustomResponse(await _user.EstaAutenticadoAsync());      
+        }
+
+        [HttpGet("ObterUserEmail")]
+        public async Task<IActionResult> ObterUserEmail()
+        {
+            return CustomResponse(await _user.ObterUserEmailAsync());
         }
 
         private async Task RealizarLoginClient(UsuarioRespostaLoginModel resposta)

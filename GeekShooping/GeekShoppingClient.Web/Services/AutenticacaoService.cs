@@ -48,12 +48,8 @@ namespace GeekShoppingClient.Web.Services
 
         public async void Logout()
         {
-           // var response = await _httpClient.GetAsync(BasePath);
-           // return await response.ReadContentAs<List<ProductModel>>();
-
           await _httpClient.GetAsync(BasePath + "deslogar");
 
-             //JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
     }
 }

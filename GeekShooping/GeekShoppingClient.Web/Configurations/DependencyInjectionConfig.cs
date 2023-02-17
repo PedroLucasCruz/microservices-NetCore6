@@ -1,4 +1,5 @@
 ﻿using GeekShoppingClient.Web.Configurations.IConfig;
+using GeekShoppingClient.Web.Extensions;
 using GeekShoppingClient.Web.Services;
 
 using GeekShoppingClient.Web.Services.IServices;
@@ -16,6 +17,11 @@ namespace GeekShoppingClient.Web.Configurations
                 c => c.BaseAddress = new Uri(configuration["ServiceUrls:AutenticacaoAPI"]));
 
             services.AddScoped<IJwtConfig, JwtConfig>();
+
+            //Cada request é uma representação unica, microsoft recomenda que seja AddSingleton
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddScoped<IUser, CoreUser>();
         }
     }
 }
