@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace GeekShoppingClient.Web.Services
 {
-    public class AutenticacaoService : IAutenticacaoService
+    public class AutenticacaoService : Service, IAutenticacaoService
     {
         //private readonly IHttpContextAccessor _acessor;
         private readonly HttpClient _httpClient;
@@ -26,6 +26,17 @@ namespace GeekShoppingClient.Web.Services
         {
         
             var response = await _httpClient.PostAsJson(BasePath + "autenticar", usuarioLogin);
+
+            //Tratar erro mais tarde no retorno
+            //if (!TratarErrosResponse(response))
+            //{
+            //    return new UsuarioRespostaLoginModel
+            //    {
+            //        ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync(), options)
+            //    }
+            //}
+
+
             if (response.IsSuccessStatusCode) //se o status for diferente de 200 ou 201 ou qualquer status de sucesso retorna execption
                 return await response.ReadContentAs<UsuarioRespostaLoginModel>();
             else throw new Exception("Somenthing went wrong when calling API");

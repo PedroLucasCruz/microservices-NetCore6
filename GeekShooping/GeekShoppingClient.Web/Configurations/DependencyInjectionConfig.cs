@@ -3,6 +3,7 @@ using GeekShoppingClient.Web.Extensions;
 using GeekShoppingClient.Web.Services;
 
 using GeekShoppingClient.Web.Services.IServices;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GeekShoppingClient.Web.Configurations
 {
@@ -19,7 +20,8 @@ namespace GeekShoppingClient.Web.Configurations
             services.AddScoped<IJwtConfig, JwtConfig>();
 
             //Cada request é uma representação unica, microsoft recomenda que seja AddSingleton
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IUser, CoreUser>();
         }

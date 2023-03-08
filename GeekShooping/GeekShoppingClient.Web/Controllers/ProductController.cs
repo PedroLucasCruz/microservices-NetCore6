@@ -30,8 +30,9 @@ namespace GeekShoppingClient.Web.Controllers
             return Ok(products);
         }
 
-        [HttpGet("product/FindProductById")]
-        public async Task<IActionResult> FindProductById([FromQuery] long Id)
+        [Authorize]
+        [HttpGet("product/FindProductById/{Id}")]
+        public async Task<IActionResult> FindProductById(long Id)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
 
@@ -39,6 +40,7 @@ namespace GeekShoppingClient.Web.Controllers
             return Ok(products);
         }
 
+        [Authorize]
         [HttpPost("product/CreateProduct")]
         public async Task<IActionResult> CreateProduct(ProductModel productModel)
         {
@@ -48,6 +50,7 @@ namespace GeekShoppingClient.Web.Controllers
                 return Ok(products);
         }
 
+        [Authorize]
         [HttpPut("product/CreateProduct")]
         public async Task<IActionResult> UpdateProduct(ProductModel productModel)
         {
@@ -55,8 +58,10 @@ namespace GeekShoppingClient.Web.Controllers
             ProductModel products = await _productService.UpdateProduct(productModel);
             return Ok(products);
         }
-        [HttpDelete("product/DeleteProduct")]
-        public async Task<IActionResult> DeleteProduct([FromQuery] long Id)
+
+        [Authorize]
+        [HttpDelete("product/DeleteProduct/{Id}")]
+        public async Task<IActionResult> DeleteProduct(long Id)
         {
             if (!ModelState.IsValid) return BadRequest("Model Inválida");
 

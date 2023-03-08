@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using GeekShoppingApp.Identity.Inicializer;
 
 namespace GeekShoppingApp.Identity.Configuration
 {
@@ -16,7 +17,7 @@ namespace GeekShoppingApp.Identity.Configuration
             return service;
         }
 
-        public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env )
+        public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer )
         {          
 
             if (env.IsDevelopment())
@@ -36,8 +37,12 @@ namespace GeekShoppingApp.Identity.Configuration
             app.UseRouting();
 
             app.UseIdentityConfiguration();
+
+
             //app.UseAuthorization();
             //app.UseAuthentication(); //adicionado para autenticar a aplicação
+
+            dbInitializer.Initialize();
 
             //Utilize os endpoint, as controller, rotas das controllers 
             app.UseEndpoints(endpoints =>

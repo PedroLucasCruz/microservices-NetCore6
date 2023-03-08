@@ -8,8 +8,7 @@ using Microsoft.Extensions.Hosting;
 #endregion
 
 using GeekShoppingApp.Identity.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.AspNetCore.Http;
+using GeekShoppingApp.Identity.Inicializer;
 
 namespace GeekShoppingApp.Identity
 {
@@ -48,7 +47,8 @@ namespace GeekShoppingApp.Identity
               
         public void ConfigureServices(IServiceCollection services)
         {
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.RegistrarServices(Configuration);
 
             services.AddIdentityConfiguration(Configuration); //Passando como parametro a interface de configuracao para tratar os dados que são precisos
             #region  Configuração feita em arquivo separado para respeita boas praticas
@@ -128,8 +128,10 @@ namespace GeekShoppingApp.Identity
         }
 
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
+
+
             app.UseSwaggerConfiguration();
             #region configuracao de adição do swagger separado em classe para atender melhores praticas
             //app.UseSwagger();
@@ -139,7 +141,7 @@ namespace GeekShoppingApp.Identity
             //});
             #endregion
 
-            app.UseApiConfiguration(env);
+            app.UseApiConfiguration(env, dbInitializer);
             #region servico de api foi separado na sua proprio classe
             //if (env.IsDevelopment())
             //{

@@ -5,6 +5,7 @@
         public string AcessToken { get; set; }
         public double ExpireIn { get; set; }
         public UsuarioToken UsuarioToken { get; set; }
+        public ResponseResult ResponseResult { get; set; } //Ou preenche os dados de AcessToken, ExpireIn e UsuarioToken, ou oobjeto de UsuarioRespostaLoginModel vem preenchido apenas ResponseResult
     }
 
     public class UsuarioToken
