@@ -93,13 +93,13 @@ namespace GeekShoppingClient.Web.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var authProperties = new AuthenticationProperties
-            {
-                AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60), //Quanto tempo ele vai durar baseado no sistema de contagem universal
-                IsPersistent = true, //Se ele é persistente, por que não vai durar apenas um request vai durar multiplos requests dentro do periodo de 60 minutos
-                IssuedUtc = DateTime.UtcNow
-            };
+            //var authProperties = new AuthenticationProperties
+            //{
+            //    AllowRefresh = true,
+            //    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60), //Quanto tempo ele vai durar baseado no sistema de contagem universal
+            //    IsPersistent = true, //Se ele é persistente, por que não vai durar apenas um request vai durar multiplos requests dentro do periodo de 60 minutos
+            //    IssuedUtc = DateTime.UtcNow
+            //};
 
             //Configuração Usando Cookie para autenticar
             //await HttpContext.SignInAsync(
@@ -112,8 +112,10 @@ namespace GeekShoppingClient.Web.Controllers
                               new ClaimsPrincipal(claimsIdentity),
                               new AuthenticationProperties
                               {
+                                  AllowRefresh = true,
                                   ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
-                                  IsPersistent = true
+                                  IsPersistent = true,
+                                  IssuedUtc = DateTime.UtcNow
                               });
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace GeekShoppingClient.Web.Configurations
 {
     public static class IdentityConfig
     {
-
+  
 
         public static void AddIdentityConfiguration(this IServiceCollection services)
         {
@@ -22,19 +23,23 @@ namespace GeekShoppingClient.Web.Configurations
             .AddJwtBearer("JwtBearer", bearerOptions => //quando você usa AddJwtBearer, você está dizendo que está adicionado suporte para este tipo especifico de token
             {
            
-                bearerOptions.Authority = "https://localhost:5001/";              
+                bearerOptions.Authority = "https://localhost:5001/"; //endereco do servico do identity em geekShoppingApp.Identity              
                 bearerOptions.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "MeuSistema",
-                    ValidAudience = "https://localhost",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-secret-key"))
+                    ValidateAudience = false
+                    
+                    //ValidateIssuer = true,
+                    //ValidateAudience = true,
+                    //ValidateLifetime = true,
+                    //ValidateIssuerSigningKey = true,
+                    //ValidIssuer = "MeuSistema",
+                    //ValidAudience = "https://localhost",
+                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-secret-key"))
                 };
             })
 
+
+            //Configuração do Cookie 
               .AddCookie(JwtBearerDefaults.AuthenticationScheme, options =>
               {
                   options.LoginPath = "/Url"; //quando o usuario não estiver logado e quiser encaminhar para uma area da aplicação
@@ -58,7 +63,17 @@ namespace GeekShoppingClient.Web.Configurations
                       context.Response.WriteAsync("Acesso Negado!");
                       return Task.CompletedTask;
                   };
-              });        
+              });
+
+
+                //Configuração de escopo de claims identity
+                //services.AddAuthorization(options =>
+                //        options.AddPolicy("role", policy =>
+                //        {
+                //            policy.RequireAuthenticatedUser();
+                //            policy.RequireClaim("role", "AindaNaoTemEscopoDeClaims");
+                //        }
+                //));
         }
 
         public static void UseIdentityConfiguration(this IApplicationBuilder app)

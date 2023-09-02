@@ -28,7 +28,7 @@ namespace GeekShoppingApp.Identity.Configuration
 
                 .AddErrorDescriber<IdentityMensagenPortugues>() //Implementa IdentityMensagenPortugues para sobre escrever os valores da classe, essa classe herda de IdentityErrorDescriber
 
-                .AddEntityFrameworkStores<ApplicationDbContext>() //especificando que você vai trabalhar com eneity framework
+                .AddEntityFrameworkStores<ApplicationDbContext>() //especificando que você vai trabalhar com este dbcontext para passar informacoes ao banco de dados no EF 
 
                 .AddDefaultTokenProviders(); //Adicionado recursos, autenticação por email etc, Token que são gerados, criptografia para reconhecimento e autenticação 
 
